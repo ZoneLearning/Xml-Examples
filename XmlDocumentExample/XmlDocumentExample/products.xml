@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<products supplier ="Bim" branch_office="Esentepe - Kartal">
+  <product>
+    <name> Çay</name>
+    <price> 8</price>
+    <stock> 20</stock>
+  </product>
+  <product>
+    <name> Kahve</name>
+    <price> 6</price>
+    <stock> 20</stock>
+  </product>
+</products>
