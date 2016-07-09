@@ -80,5 +80,11 @@ namespace XmlDocumentExample
             connection.Close();
             doc.Save("products_db.xml");
         }
+
+        private void btnIntentOrderDetail_Click(object sender, EventArgs e)
+        {
+            OrderDetailsForm form = new OrderDetailsForm();
+            form.Show();
+        }
     }
 }

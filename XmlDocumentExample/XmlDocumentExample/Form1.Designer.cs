@@ -38,6 +38,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnRead = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
+            this.btnIntentOrderDetail = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -121,11 +122,22 @@
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
+            // btnIntentOrderDetail
+            // 
+            this.btnIntentOrderDetail.Location = new System.Drawing.Point(265, 11);
+            this.btnIntentOrderDetail.Name = "btnIntentOrderDetail";
+            this.btnIntentOrderDetail.Size = new System.Drawing.Size(103, 23);
+            this.btnIntentOrderDetail.TabIndex = 6;
+            this.btnIntentOrderDetail.Text = "Order Detail\'a Geç";
+            this.btnIntentOrderDetail.UseVisualStyleBackColor = true;
+            this.btnIntentOrderDetail.Click += new System.EventHandler(this.btnIntentOrderDetail_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 300);
+            this.Controls.Add(this.btnIntentOrderDetail);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnRead);
             this.Controls.Add(this.textBox2);
@@ -152,6 +164,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnRead;
         private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button btnIntentOrderDetail;
     }
 }
 
