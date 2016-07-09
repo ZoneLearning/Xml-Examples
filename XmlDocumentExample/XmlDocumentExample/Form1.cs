@@ -22,7 +22,7 @@ namespace XmlDocumentExample
         private void btnRead_Click(object sender, EventArgs e)
         {
             XmlDocument xdoc = new XmlDocument();
-            xdoc.Load("..\\..\\products.xml");
+            xdoc.Load("products_db.xml");
             XmlNode products = xdoc.SelectSingleNode("products");
             textBox1.Text = products.Attributes["supplier"].Value;
             textBox2.Text = products.Attributes["branch_office"].Value;
@@ -40,12 +40,21 @@ namespace XmlDocumentExample
         private void btnCreate_Click(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection("Server=.;Database=NORTHWND;User=sa;Pwd=asdf");
-            SqlCommand command = new SqlCommand("Select * from Products",connection);
+            SqlCommand command = new SqlCommand("Select * from Products", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             XmlDocument doc = new XmlDocument();
             XmlElement products = doc.CreateElement("products");
             doc.AppendChild(products);
+
+            XmlAttribute supplier = doc.CreateAttribute("supplier");
+            supplier.Value = "Bim";
+
+            XmlAttribute branch_office = doc.CreateAttribute("branch_office");
+            branch_office.Value = "Esentepe-Kartal";
+            products.Attributes.Append(supplier);
+            products.Attributes.Append(branch_office);
+
             while (reader.Read())
             {
                 XmlElement product = doc.CreateElement("product");
