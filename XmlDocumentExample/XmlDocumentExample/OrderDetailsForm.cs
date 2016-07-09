@@ -23,7 +23,7 @@ namespace XmlDocumentExample
             SqlConnection connection = new SqlConnection("Server=.;Database=NORTHWND;User=sa;Pwd=asdf");
             SqlDataAdapter adapter = new SqlDataAdapter("Select * from [Order Details]", connection);
             DataSet ds = new DataSet();
-            adapter.Fill(ds);
+            adapter.Fill(ds,"order_detail");
             ds.WriteXml("order_detail.xml");
 
         }
