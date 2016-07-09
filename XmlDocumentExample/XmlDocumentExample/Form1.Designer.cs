@@ -37,6 +37,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnRead = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -102,7 +103,7 @@
             // 
             // btnRead
             // 
-            this.btnRead.Location = new System.Drawing.Point(19, 12);
+            this.btnRead.Location = new System.Drawing.Point(12, 12);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(75, 23);
             this.btnRead.TabIndex = 4;
@@ -110,11 +111,22 @@
             this.btnRead.UseVisualStyleBackColor = true;
             this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(149, 12);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.TabIndex = 5;
+            this.btnCreate.Text = "XML oluştur";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 300);
+            this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnRead);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -139,6 +151,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnRead;
+        private System.Windows.Forms.Button btnCreate;
     }
 }
 

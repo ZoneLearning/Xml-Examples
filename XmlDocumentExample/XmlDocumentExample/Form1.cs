@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,41 @@ namespace XmlDocumentExample
                 listView1.Items.Add(list);
 
             }
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection("Server=.;Database=NORTHWND;User=sa;Pwd=asdf");
+            SqlCommand command = new SqlCommand("Select * from Products",connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            XmlDocument doc = new XmlDocument();
+            XmlElement products = doc.CreateElement("products");
+            doc.AppendChild(products);
+            while (reader.Read())
+            {
+                XmlElement product = doc.CreateElement("product");
+
+                XmlElement name = doc.CreateElement("name");
+                name.InnerText = reader["ProductName"].ToString();
+
+                XmlElement price = doc.CreateElement("price");
+                doc.CreateElement("price");
+                price.InnerText = reader["UnitPrice"].ToString();
+
+                XmlElement stock = doc.CreateElement("stock");
+                doc.CreateElement("stock");
+                stock.InnerText = reader["UnitsInStock"].ToString();
+
+
+                product.AppendChild(name);
+                product.AppendChild(price);
+                product.AppendChild(stock);
+
+                products.AppendChild(product);
+            }
+            connection.Close();
+            doc.Save("products_db.xml");
         }
     }
 }
