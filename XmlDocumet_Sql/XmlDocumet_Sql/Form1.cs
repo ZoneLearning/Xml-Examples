@@ -21,9 +21,14 @@ namespace XmlDocumet_Sql
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
+            /*Connection pooling, veritabanına yapılan bağlantıların sonraki bağlantılar için de sıfırdan oluşturma maliyetine gerek kalmaksızın tekrar kullanılabilir olması amacıyla bellekte (sunucuda hani hostta) tutulan bir tür saklayıcıdır. */
+
+            /* Her bir connection pool için min pool size ve max pool size özellikleri verilir. Bu değerlerin varsayılan değerleri sırasıyla 1 ve 100'dür. Yani varsayılan değerler bırakılırsa connection pool 100 adede kadar aktif bağlantı tutar. Veritabanına yeni bir bağlantı talebi gelirse, havuzda boşta bağlantı varsa hemen verilir. (Max Pool sayısı, ihtiyaca göre değişir. Pool kapasitesini artırırsanız daha çok talebe hızlı cevap verebilirsiniz 
+             * fakat bir yandan da bellekte daha fazla yer kaplamaya başlayacağınızdan, bu noktada ince ayar yapılarak optimal değerler bulunmalıdır.)*/
+
             XmlDocument xdoc = new XmlDocument();
-            XmlElement root = xdoc.CreateElement("Tedarikciler");
-            SqlConnection conSuppliers = new SqlConnection("Server=.;Database=NORTHWND;Integrated Security=true;MultipleActiveResultSets=true;");
+            XmlElement root = xdoc.CreateElement("Suppliers");
+            SqlConnection conSuppliers = new SqlConnection("Server=.;Database=NORTHWND;Integrated Security=true;MultipleActiveResultSets=true;Max Pool Size=500;Pooling=true");
             SqlCommand comSuppliers = new SqlCommand("Select * from Suppliers", conSuppliers);
             conSuppliers.Open();
             SqlDataReader suppliersRead = comSuppliers.ExecuteReader();
@@ -40,6 +45,26 @@ namespace XmlDocumet_Sql
                 supplier.Attributes.Append(company);
                 supplier.Attributes.Append(phone);
                 supplier.Attributes.Append(contactName);
+
+                SqlCommand comProduct = new SqlCommand("Select * from Products where SupplierId=@s_id", conSuppliers);
+                comProduct.Parameters.AddWithValue("@s_id", suppliersRead["SupplierId"]);
+                SqlDataReader productReader = comProduct.ExecuteReader();
+                while (productReader.Read())
+                {
+                    XmlElement product = xdoc.CreateElement("product");
+                    XmlAttribute name = xdoc.CreateAttribute("name");
+                    name.Value = productReader["ProductName"].ToString();
+                    XmlAttribute price = xdoc.CreateAttribute("price");
+                    price.Value = productReader["UnitPrice"].ToString();
+                    XmlAttribute stock = xdoc.CreateAttribute("stock");
+                    stock.Value = productReader["UnitsInStock"].ToString();
+
+                    product.Attributes.Append(name);
+                    product.Attributes.Append(price);
+                    product.Attributes.Append(stock);
+
+                    supplier.AppendChild(product);
+                }
 
                 root.AppendChild(supplier);
             }
