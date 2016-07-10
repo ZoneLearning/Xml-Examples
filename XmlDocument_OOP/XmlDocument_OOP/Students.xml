@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Students>
+  <Student name="Ayşe" surname="Öztürk">
+    <Course name="Yazılım" credit="10" period="10">
+      <Exams>
+        <Exam name="Intro">75</Exam>
+        <Exam name="C#">80</Exam>
+        <Exam name="OOP">50</Exam>
+        <Exam name="Veri Tabanı">90</Exam>
+      </Exams>
+      <Projects>
+        <Project name="Intro">95</Project>
+        <Project name="C#">50</Project>
+        <Project name="OOP">80</Project>
+        <Project name="Veri Tabanı">75</Project>
+        <Project name ="Bitirme">100</Project>
+      </Projects>
+    </Course>
+
+    <Course name="İleri Yazılım" credit="10" period="10">
+      <Exams>
+        <Exam name="Ado.net">80</Exam>
+        <Exam name="Entity Framework">50</Exam>
+        <Exam name="Web Servis">75</Exam>
+        <Exam name="Framework">75</Exam>
+      </Exams>
+      <Projects>
+        <Project name="Ado.net">80</Project>
+        <Project name="Entity Framework">45</Project>
+        <Project name="Web Servis">80</Project>
+        <Project name="Framework">65</Project>
+        <Project name ="Bitirme">100</Project>
+      </Projects>
+    </Course>
+
+  </Student>
+  <Student name="Merve" surname="Yıldız">
+    <Course name="Bilgisayar Müh" credit="10" period="10">
+      <Exams>
+        <Exam name="Introduction to Programming">75</Exam>
+        <Exam name="Veri Yapıları">50</Exam>
+        <Exam name="Nesneye Yönelik Programlama">90</Exam>
+        <Exam name="File Organization">80</Exam>
+      </Exams>
+      <Projects>
+        <Project name="Introduction to Programming">95</Project>
+        <Project name="Veri Yapıları">50</Project>
+        <Project name="Nesneye Yönelik Programlama">80</Project>
+        <Project name="File Organization">75</Project>
+        <Project name ="Bitirme">100</Project>
+      </Projects>
+    </Course>
+
+    <Course name="İleri Bil Müh" credit="10" period="10">
+      <Exams>
+        <Exam name="Algorithm Analysis">80</Exam>
+        <Exam name="Operating Systems">50</Exam>
+        <Exam name="Veri Tabanı Yönetim Sistemleri">75</Exam>
+        <Exam name="Derleyici Tasarımı">75</Exam>
+      </Exams>
+      <Projects>
+        <Project name="Algorithm Analysis">80</Project>
+        <Project name="Operating Systems">45</Project>
+        <Project name="Veri Tabanı Yönetim Sistemleri">80</Project>
+        <Project name="Derleyici Tasarım">65</Project>
+        <Project name ="Bitirme">100</Project>
+      </Projects>
+    </Course>
+
+  </Student>
+</Students>
