@@ -24,12 +24,29 @@ namespace XmlDocument_OOP
             xdoc.Load("../../Students.xml");
             XmlNode students = xdoc.SelectSingleNode("Students");
             XmlNodeList list = students.SelectNodes("Student");
+            lstStudents.Items.Clear();
             foreach (XmlNode student in list)
             {
-                string name = student.Attributes["name"].Value;
-                string surname = student.Attributes["surname"].Value;
-                listBox1.Items.Add(name + " " + surname);
+                Student s = new Student();
+                s.Name = student.Attributes["name"].Value;
+                s.Surname = student.Attributes["surname"].Value;
+                s.Node = student;
+                lstStudents.Items.Add(s);
             }
+        }
+
+        private void lstStudents_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lstStudents.SelectedItem == null) return;
+            Student selected = (Student)lstStudents.SelectedItem;
+            lstCourses.Items.Clear();
+            foreach (XmlNode course in selected.Node.SelectNodes("Course"))
+            {
+                Course c = new Course();
+                c.Node = course;
+                lstCourses.Items.Add(c);
+            }
+
         }
     }
 }
