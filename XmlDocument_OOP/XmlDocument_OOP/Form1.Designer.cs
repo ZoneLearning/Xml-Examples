@@ -83,6 +83,7 @@
             this.lstCourses.Name = "lstCourses";
             this.lstCourses.Size = new System.Drawing.Size(143, 277);
             this.lstCourses.TabIndex = 4;
+            this.lstCourses.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstCourses_MouseDoubleClick);
             // 
             // lstGrades
             // 
@@ -91,7 +92,6 @@
             this.lstGrades.Name = "lstGrades";
             this.lstGrades.Size = new System.Drawing.Size(138, 277);
             this.lstGrades.TabIndex = 1;
-            this.lstGrades.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstStudents_MouseDoubleClick);
             // 
             // label3
             // 

@@ -48,5 +48,27 @@ namespace XmlDocument_OOP
             }
 
         }
+
+        private void lstCourses_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lstCourses.SelectedItem == null) return;
+            Course selected = (Course)lstCourses.SelectedItem;
+            lstGrades.Items.Clear();
+
+            foreach (XmlNode exam in selected.Node.SelectNodes("Exams/Exam"))
+            {
+                Exam ex = new Exam();
+                ex.Node = exam;
+                lstGrades.Items.Add(ex);
+            }
+            lstProjects.Items.Clear();
+            foreach (XmlNode project in selected.Node.SelectNodes("Projects/Project"))
+            {
+                Project p = new Project();
+                p.Node = project;
+                lstProjects.Items.Add(p);
+            }
+
+        }
     }
 }
